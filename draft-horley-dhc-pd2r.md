@@ -361,8 +361,6 @@ CLAT behavior is unchanged; the host simply has more stable options.
  +--------------+
 ```
 
----
-
 # Validation Logic
 
 Client MUST:
@@ -379,13 +377,11 @@ Server MUST:
 2. Validate ParentPrefix is an on-link /64.
 3. Reject attempts to allocate ranges outside administrative pools.
 
-
 # Security Considerations
 
 * Predictable IID ranges may reveal host identity patterns; operators SHOULD allow randomized distribution.
 * DHCPv6 authentication SHOULD be used when available.
 * No new attacks on SLAAC or RAs are introduced.
-
 
 # IANA Considerations
 
@@ -394,9 +390,6 @@ IANA is requested to assign a DHCPv6 option code for:
 ```
 OPTION_IID_SUBRANGE
 ```
-
-
-
 --- back
 
 # Acknowledgments
