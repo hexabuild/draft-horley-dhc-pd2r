@@ -329,7 +329,7 @@ CLAT behavior is unchanged; the host simply has more stable options.
 ```
  +-------------+
  | INIT        |
- +------+------+ 
+ +------+------+
         |
         v
  +------+------+     RA arrives
