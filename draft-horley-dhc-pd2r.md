@@ -29,11 +29,11 @@ author:
     email: ed@hexabuild.io
 
 normative:
-RFC 8174
-RFC 4862
-RFC 8415
-RFC 9663
-RFC 6877
+RFC 8174:
+RFC 4862:
+RFC 8415:
+RFC 9663:
+RFC 6877:
 
 informative:
 
