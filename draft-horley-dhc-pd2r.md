@@ -122,7 +122,7 @@ A new DHCPv6 option, **OPTION_IID_SUBRANGE**, provides:
 
 The client treats addresses formed from this range as *additional IPv6 addresses*. These addresses:
 
-- belong to the on link /64
+- belong to the on-link /64
 - are not SLAAC addresses and do not follow IID rules (stable/private)
 - MUST pass DAD
 - MAY be used by any local interface
