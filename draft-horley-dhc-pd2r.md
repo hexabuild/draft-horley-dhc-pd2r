@@ -114,17 +114,17 @@ The DHCPv6 server never advertises a prefix and never signals a non-/64 boundary
 
 A new DHCPv6 option, **OPTION_IID_SUBRANGE**, provides:
 
-* ParentPrefix (always a /64)
-* StartIID
-* EndIID
-* Lifetime
+- ParentPrefix (always a /64)
+- StartIID
+- EndIID
+- Lifetime
 
 The client treats addresses formed from this range as *additional IPv6 addresses*. These addresses:
 
-* belong to the on-link /64
-* are not SLAAC addresses and do not follow IID rules (stable/private)
-* MUST pass DAD
-* MAY be used by any local interface
+- belong to the on-link /64
+- are not SLAAC addresses and do not follow IID rules (stable/private)
+- MUST pass DAD
+- MAY be used by any local interface
 
 # DHCPv6 OPTION_IID_SUBRANGE
 
