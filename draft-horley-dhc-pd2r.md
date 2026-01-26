@@ -9,7 +9,7 @@ number:
 date:
 consensus: true
 v: 3
-area: "int"
+area: "Internet"
 workgroup: "Dynamic Host Configuration"
 keyword:
  - Internet Draft
@@ -19,7 +19,7 @@ venue:
   mail: "dhcwg@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/dhcwg/"
   github: "hexabuild/draft-horley-dhc-pd2r"
-  latest: "https://github.com/hexabuild/draft-horley-dhc-pd2r"
+  latest: "https://hexabuild.github.io/draft-horley-dhc-pd2r/draft-horley-dhc-pd2r.html"
 
 author:
  -
