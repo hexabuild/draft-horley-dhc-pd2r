@@ -19,35 +19,34 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Reserved Interface Identifier Sub-Range Delegation for IPv6 Endpoints"
+abbrev: "DHCPv6-PD Sub-Range Delegation"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-horley-dhc-pd2r-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "int"
+workgroup: "Dynamic Host Configuration"
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - Internet Draft
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Dynamic Host Configuration"
+  type: "Working Group"
+  mail: "dhcwg@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/dhcwg/"
+  github: "hexabuild/draft-horley-dhc-pd2r"
+  latest: "https://github.com/hexabuild/draft-horley-dhc-pd2r"
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    ins: E. Horley
+    fullname: Ed Horley
+    organization: HexaBuild
+    email: ed@hexabuild.io
 
 normative:
 
