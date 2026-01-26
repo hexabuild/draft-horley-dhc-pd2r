@@ -39,10 +39,7 @@ informative:
 
 
 --- abstract
-
 This document specifies a mechanism allowing DHCPv6 servers to allocate small Interface Identif(IID) sub-ranges (e.g., /96 or /120 blocks) from within the lower 64 bits of an IPv6 on-link /64. These sub-ranges provide hosts with deterministic, host-specific address pools while preserving normal Neighbor Discovery (ND) and Router Advertisement (RA) behavior. Clients continue to treat the prefix as a /64 for all purposes, including ND, and may freely assign addresses from the reserved sub-range to any local interface (including a CLAT internal interface). This specification maintains architectural requirements for IPv6 subnetting, avoids introducing new routing semantics, and enables hosts to perform richer internal addressing without disrupting the network.
-
-
 --- middle
 
 # Introduction
@@ -80,19 +77,19 @@ Key words (MUST, MUST NOT, etc.) are per RFC 8174.
 This specification MUST meet the following:
 
 1. **Do not alter SLAAC.**
-   SLAAC MUST operate normally. Host MUST consider the on-link prefix to be /64.
+SLAAC MUST operate normally. Host MUST consider the on-link prefix to be /64.
 
 2. **No changes to Router Advertisements.**
-   RAs MUST NOT be extended with additional options related to reserved sub-ranges.
+RAs MUST NOT be extended with additional options related to reserved sub-ranges.
 
 3. **Server-managed uniqueness.**
-   DHCPv6 server MUST ensure IID ranges do not overlap between clients.
+DHCPv6 server MUST ensure IID ranges do not overlap between clients.
 
 4. **Clients are not required to advertise these prefixes.**
-   The reserved range is local-only and MUST NOT be treated as a routed prefix.
+The reserved range is local-only and MUST NOT be treated as a routed prefix.
 
 5. **Host-local multi-interface use allowed.**
-   Clients MAY assign sub-range addresses to any local interface.
+Clients MAY assign sub-range addresses to any local interface.
 
 6. **If DHCPv6 and SLAAC are run on the same on-link via the RA, then simple duplicate address detection will be used for the rare cases where a SLAAC address is dynamically generated in one of the IID Sub-Ranges that is in use. The host that is allocated the IID Sub-Range MUST do the DAD response on behalf of the entire range.
 
@@ -134,21 +131,21 @@ The client treats addresses formed from this range as *additional IPv6 addresses
 ### Format
 
 ```
-   0                   1                   2                   3
-   0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |      OPTION_IID_SUBRANGE      |         option-len           |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |                                                               |
-  |                       ParentPrefix (128 bits)                 |
-  |                                                               |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |                         RangeStartIID (64 bits)               |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |                          RangeEndIID (64 bits)                |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-  |          Flags (16 bits)          |       Lifetime (32 bits)  |
-  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      OPTION_IID_SUBRANGE      |         option-len           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+|                       ParentPrefix (128 bits)                 |
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                         RangeStartIID (64 bits)               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          RangeEndIID (64 bits)                |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Flags (16 bits)          |       Lifetime (32 bits)  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 ### Field Requirements
@@ -226,12 +223,11 @@ IPv6Address = ParentPrefix[0:64] || IID_value
 
 5. Perform DAD normally.
 6. MAY assign any sub-range address to:
-
-   * primary interface
-   * CLAT internal interface
-   * loopback
-   * virtual NICs
-   * containers
+* primary interface
+* CLAT internal interface
+* loopback
+* virtual NICs
+* containers
 
 # Examples
 
