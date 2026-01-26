@@ -122,7 +122,6 @@ A new DHCPv6 option, **OPTION_IID_SUBRANGE**, provides:
 
 The client treats addresses formed from this range as *additional IPv6 addresses*. These addresses:
 
-- testing
 - belong to the on-link /64
 - are not SLAAC addresses and do not follow IID rules (stable/private)
 - MUST pass DAD
@@ -223,7 +222,7 @@ Client MUST follow these rules:
 example:
 
 ```text
-IPv6Address = ParentPrefix[0:64] || IID_value
+IPv6Address = ParentPrefix\[0:64] || IID_value
 ```
 
 5. Perform DAD normally.
