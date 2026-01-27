@@ -100,9 +100,10 @@ Table of Contents
        11.1.1.  Example CLAT Assignment
      11.2.  Server State Machine
        11.2.1.  Client State Machine
-   12. Security Considerations
-   13. IANA Considerations
-   14. Normative References
+   12. Validation Logic
+   13. Security Considerations
+   14. IANA Considerations
+   15. Normative References
    Acknowledgments
    Author's Address
 
@@ -397,15 +398,44 @@ Table of Contents
    +------+-------+ | CONFIG_IIDS | +------+-------+ | v
    +------+-------+ | OPERATE | +--------------+
 
-12.  Security Considerations
+12.  Validation Logic
 
-   TODO Security
+   Client MUST:
 
-13.  IANA Considerations
+   1.  Confirm ParentPrefix matches a prefix advertised via RA.
 
-   This document has no IANA actions.
+   2.  Reject options referencing unknown or non-/64 prefixes.
 
-14.  Normative References
+   3.  Ensure RangeEndIID ≥ RangeStartIID.
+
+   4.  Ensure generated addresses succeed in DAD.
+
+   5.  Ignore invalid or overlapping sub-ranges.
+
+   Server MUST:
+
+   1.  Guarantee exclusivity of IID ranges.
+
+   2.  Validate ParentPrefix is an on-link /64.
+
+   3.  Reject attempts to allocate ranges outside administrative pools.
+
+13.  Security Considerations
+
+   *  Predictable IID ranges may reveal host identity patterns;
+      operators SHOULD allow randomized distribution.
+
+   *  DHCPv6 authentication SHOULD be used when available.
+
+   *  No new attacks on SLAAC or RAs are introduced.
+
+14.  IANA Considerations
+
+   IANA is requested to assign a DHCPv6 option code for:
+
+   OPTION_IID_SUBRANGE
+
+15.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -418,7 +448,8 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   The author(s) would like to acknowledge the valuable input and
+   contributions from Tim Winters, Nick Buraglio, and Tommy Jensen.
 
 Author's Address
 

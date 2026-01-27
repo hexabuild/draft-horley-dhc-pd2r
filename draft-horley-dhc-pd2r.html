@@ -1234,19 +1234,22 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-validation-logic" class="internal xref">Validation Logic</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+            <p id="section-toc.1-1.17.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1729,26 +1732,76 @@ Reserved range: 2001:db8:1000:200::200–::2FF<a href="#section-11.1.1-1" class=
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="validation-logic">
 <section id="section-12">
-      <h2 id="name-security-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-validation-logic">
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-validation-logic" class="section-name selfRef">Validation Logic</a>
       </h2>
-<p id="section-12-1">TODO Security<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-12-1">Client <span class="bcp14">MUST</span>:<a href="#section-12-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-12-2">
+<li id="section-12-2.1">
+          <p id="section-12-2.1.1">Confirm ParentPrefix matches a prefix advertised via RA.<a href="#section-12-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-2.2">
+          <p id="section-12-2.2.1">Reject options referencing unknown or non-/64 prefixes.<a href="#section-12-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-2.3">
+          <p id="section-12-2.3.1">Ensure <code>RangeEndIID ≥ RangeStartIID</code>.<a href="#section-12-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-2.4">
+          <p id="section-12-2.4.1">Ensure generated addresses succeed in DAD.<a href="#section-12-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-2.5">
+          <p id="section-12-2.5.1">Ignore invalid or overlapping sub-ranges.<a href="#section-12-2.5.1" class="pilcrow">¶</a></p>
+</li>
+      </ol>
+<p id="section-12-3">Server <span class="bcp14">MUST</span>:<a href="#section-12-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-12-4">
+<li id="section-12-4.1">
+          <p id="section-12-4.1.1">Guarantee exclusivity of IID ranges.<a href="#section-12-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-4.2">
+          <p id="section-12-4.2.1">Validate ParentPrefix is an on-link /64.<a href="#section-12-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-12-4.3">
+          <p id="section-12-4.3.1">Reject attempts to allocate ranges outside administrative pools.<a href="#section-12-4.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ol>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-13">
+      <h2 id="name-security-considerations">
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<ul class="normal">
+<li class="normal" id="section-13-1.1">
+          <p id="section-13-1.1.1">Predictable IID ranges may reveal host identity patterns; operators <span class="bcp14">SHOULD</span> allow randomized distribution.<a href="#section-13-1.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-13-1.2">
+          <p id="section-13-1.2.1">DHCPv6 authentication <span class="bcp14">SHOULD</span> be used when available.<a href="#section-13-1.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-13-1.3">
+          <p id="section-13-1.3.1">No new attacks on SLAAC or RAs are introduced.<a href="#section-13-1.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-13">
+<section id="section-14">
       <h2 id="name-iana-considerations">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-13-1">This document has no IANA actions.<a href="#section-13-1" class="pilcrow">¶</a></p>
+<p id="section-14-1">IANA is requested to assign a DHCPv6 option code for:<a href="#section-14-1" class="pilcrow">¶</a></p>
+<p id="section-14-2"><code>
+OPTION_IID_SUBRANGE
+</code><a href="#section-14-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-14">
+<section id="section-15">
       <h2 id="name-normative-references">
-<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-15" class="section-number selfRef">15. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
@@ -1767,7 +1820,7 @@ Reserved range: 2001:db8:1000:200::200–::2FF<a href="#section-11.1.1-1" class=
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">The author(s) would like to acknowledge the valuable input and contributions from Tim Winters, Nick Buraglio, and Tommy Jensen.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
