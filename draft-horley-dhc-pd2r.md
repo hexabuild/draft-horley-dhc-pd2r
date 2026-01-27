@@ -58,28 +58,23 @@ informative:
 
 TODO Abstract
 
-
 --- middle
 
 # Introduction
 
 TODO Introduction
 
-
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
-
 
 # Security Considerations
 
 TODO Security
 
-
 # IANA Considerations
 
 This document has no IANA actions.
-
 
 --- back
 
