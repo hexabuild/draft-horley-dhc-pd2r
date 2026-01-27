@@ -119,10 +119,10 @@ then simple duplicate address detection will be used for the rare cases where a 
 
 The mechanism operates in the following phases:
 
-```text
-+---------+       DHCPv6 IA_NA + OPTION_IID_SUBRANGE        +---------+
-| Client  | <------------------------------------------------> | Server |
-+---------+                                                     +---------+
+```
+ +---------+    DHCPv6 IA_NA + OPTION_IID_SUBRANGE       +---------+
+ | Client  | <------------------------------------------> | Server |
+ +---------+                                             +---------+
 
 1. Client sends SOLICIT.
 2. Server allocates and returns IID sub-range via OPTION_IID_SUBRANGE.
@@ -131,6 +131,22 @@ The mechanism operates in the following phases:
 ```
 
 The DHCPv6 server never advertises a prefix and never signals a non-/64 boundary.
+
+# Protocol Overview
+
+A new DHCPv6 option, **OPTION_IID_SUBRANGE**, provides:
+
+- ParentPrefix (always a /64)
+- StartIID
+- EndIID
+- Lifetime
+
+The client treats addresses formed from this range as *additional IPv6 addresses*. These addresses:
+
+- belong to the on-link /64
+- are not SLAAC addresses and do not follow IID rules (stable/private)
+- MUST pass DAD
+- MAY be used by any local interface
 
 # Security Considerations
 
