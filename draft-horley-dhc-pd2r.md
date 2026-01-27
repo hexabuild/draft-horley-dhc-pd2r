@@ -283,6 +283,43 @@ Client may now assign:
 2001:db8:1000:200::1FF
 ```
 
+# CLAT Use Cases
+
+## CLAT IID Reservation
+
+A CLAT host MUST use a deterministic IPv6 address for its NAT64-binding IPv6 endpoint.
+
+Today, implementations typically:
+
+- derive the CLAT IPv6 address from EUI-64 or stable IID
+- rely on RFC 7217 private addresses
+- limit the host to one CLAT address
+
+With IID sub-ranges, the host MAY allocate:
+
+- one address for CLAT internal translation
+- other addresses for per-flow, per-container, or per-service mapping
+
+### Example CLAT Assignment
+
+```
+Reserved range: 2001:db8:1000:200::200–::2FF
+
+CLAT internal interface:
+  2001:db8:1000:200::200
+
+Container A (CLAT-enhanced):
+  2001:db8:1000:200::210
+
+Container B:
+  2001:db8:1000:200::220
+
+Host loopback:
+  2001:db8:1000:200::2FF
+```
+
+CLAT behavior is unchanged; the host simply has more stable options.
+
 # Security Considerations
 
 TODO Security
