@@ -120,9 +120,9 @@ then simple duplicate address detection will be used for the rare cases where a 
 The mechanism operates in the following phases:
 
 ```
- +---------+    DHCPv6 IA_NA + OPTION_IID_SUBRANGE       +---------+
- | Client  | <------------------------------------------> | Server |
- +---------+                                             +---------+
+ +---------+         DHCPv6 IA_NA + OPTION_IID_SUBRANGE            +---------+
+ | Client  | <----------------------------------------------------> | Server |
+ +---------+                                                       +---------+
 
 1. Client sends SOLICIT.
 2. Server allocates and returns IID sub-range via OPTION_IID_SUBRANGE.
@@ -147,6 +147,34 @@ The client treats addresses formed from this range as *additional IPv6 addresses
 - are not SLAAC addresses and do not follow IID rules (stable/private)
 - MUST pass DAD
 - MAY be used by any local interface
+
+# DHCPv6 OPTION_IID_SUBRANGE
+
+## Format
+
+```
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |      OPTION_IID_SUBRANGE      |         option-len            |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |                                                               |
+ |                       ParentPrefix (128 bits)                 |
+ |                                                               |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |                         RangeStartIID (64 bits)               |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |                          RangeEndIID (64 bits)                |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |          Flags (16 bits)          |       Lifetime (32 bits)  |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+### Field Requirements
+
+- ParentPrefix MUST be a /64 (low 64 bits = 0).
+- RangeStartIID and RangeEndIID MUST satisfy `Start ≤ End`.
+- Lifetime MUST be treated similar to IA_NA lifetimes.
 
 # Security Considerations
 
