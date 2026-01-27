@@ -243,7 +243,7 @@ Client MUST follow these rules:
 example:
 
 ```
-IPv6Address = ParentPrefix\[0:64] || IID_value
+IPv6Address = ParentPrefix/[0:64] || IID_value
 ```
 
 5. Perform DAD normally.
@@ -253,6 +253,35 @@ IPv6Address = ParentPrefix\[0:64] || IID_value
 - loopback
 - virtual NICs
 - containers
+
+# Examples
+
+## Example DHCPv6 Exchange
+
+```
+Client → SOLICIT
+
+Server → ADVERTISE
+  IA_NA: 2001:db8:1000:200::a8f1
+  OPTION_IID_SUBRANGE:
+    ParentPrefix: 2001:db8:1000:200::/64
+    StartIID:     0x0000000000000100
+    EndIID:       0x00000000000001FF
+    Lifetime:     7200
+
+Client → REQUEST
+
+Server → REPLY (same contents)
+```
+
+Client may now assign:
+
+```
+2001:db8:1000:200::100
+2001:db8:1000:200::101
+...
+2001:db8:1000:200::1FF
+```
 
 # Security Considerations
 
