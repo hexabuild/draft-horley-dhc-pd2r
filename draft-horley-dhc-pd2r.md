@@ -85,8 +85,6 @@ This mechanism extends conceptual models from RFC 9663 by specifying concrete DH
 
 # Terminology
 
-Key words (MUST, MUST NOT, etc.) are per RFC 8174.
-
 **Parent Prefix:** The /64 prefix advertised via RA.
 
 **IID Sub-Range:** A reserved block of the lower 64 bits, commonly /96 or /120.
@@ -94,6 +92,28 @@ Key words (MUST, MUST NOT, etc.) are per RFC 8174.
 **Reserved IID Range:** The usable IPv6 addresses created by concatenating ParentPrefix\[0:64] with the IID sub-range.
 
 **CLAT Host:** A Customer-side translator using IPv6 addresses for NAT64/CLAT internal mappings.
+
+# Requirements and Constraints
+
+This specification MUST meet the following:
+
+1. **Do not alter SLAAC.**
+SLAAC MUST operate normally. Host MUST consider the on-link prefix to be /64.
+
+2. **No changes to Router Advertisements.**
+RAs MUST NOT be extended with additional options related to reserved sub-ranges.
+
+3. **Server-managed uniqueness.**
+DHCPv6 server MUST ensure IID ranges do not overlap between clients.
+
+4. **Clients are not required to advertise these prefixes.**
+The reserved range is local-only and MUST NOT be treated as a routed prefix.
+
+5. **Host-local multi-interface use allowed.**
+Clients MAY assign sub-range addresses to any local interface.
+
+6. **If DHCPv6 and SLAAC are run on the same on-link via the RA**
+Then simple duplicate address detection will be used for the rare cases where a SLAAC address is dynamically generated in one of the IID Sub-Ranges that is in use. The host that is allocated the IID Sub-Range MUST do the DAD response on behalf of the entire range.
 
 # Security Considerations
 
