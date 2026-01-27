@@ -7,7 +7,7 @@
 <title>Reserved Interface Identifier Sub-Range Delegation for IPv6 Endpoints</title>
 <meta content="Ed Horley" name="author">
 <meta content="
-       TODO Abstract 
+       This document specifies a mechanism allowing DHCPv6 servers to allocate small Interface Identifier (IID) sub-ranges (e.g., /96 or /120 blocks) from within the lower 64 bits of an IPv6 on-link /64. These sub-ranges provide hosts with deterministic, host-specific address pools while preserving normal Neighbor Discovery (ND) and Router Advertisement (RA) behavior. Clients continue to treat the prefix as a /64 for all purposes, including ND, and may freely assign addresses from the reserved sub-range to any local interface (including a CLAT internal interface). This specification maintains architectural requirements for IPv6 subnetting, avoids introducing new routing semantics, and enables hosts to perform richer internal addressing without disrupting the network. 
     " name="description">
 <meta content="xml2rfc 3.31.0" name="generator">
 <meta content="Internet Draft" name="keyword">
@@ -1079,7 +1079,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Reserved Interface Identifier Sub-Range Delegation for IPv6 Endpoints</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document specifies a mechanism allowing DHCPv6 servers to allocate small Interface Identifier (IID) sub-ranges (e.g., /96 or /120 blocks) from within the lower 64 bits of an IPv6 on-link /64. These sub-ranges provide hosts with deterministic, host-specific address pools while preserving normal Neighbor Discovery (ND) and Router Advertisement (RA) behavior. Clients continue to treat the prefix as a /64 for all purposes, including ND, and may freely assign addresses from the reserved sub-range to any local interface (including a CLAT internal interface). This specification maintains architectural requirements for IPv6 subnetting, avoids introducing new routing semantics, and enables hosts to perform richer internal addressing without disrupting the network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">

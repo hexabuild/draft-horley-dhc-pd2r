@@ -13,7 +13,18 @@ Expires: 31 July 2026
 
 Abstract
 
-   TODO Abstract
+   This document specifies a mechanism allowing DHCPv6 servers to
+   allocate small Interface Identifier (IID) sub-ranges (e.g., /96 or
+   /120 blocks) from within the lower 64 bits of an IPv6 on-link /64.
+   These sub-ranges provide hosts with deterministic, host-specific
+   address pools while preserving normal Neighbor Discovery (ND) and
+   Router Advertisement (RA) behavior.  Clients continue to treat the
+   prefix as a /64 for all purposes, including ND, and may freely assign
+   addresses from the reserved sub-range to any local interface
+   (including a CLAT internal interface).  This specification maintains
+   architectural requirements for IPv6 subnetting, avoids introducing
+   new routing semantics, and enables hosts to perform richer internal
+   addressing without disrupting the network.
 
 About This Document
 
