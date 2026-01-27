@@ -176,6 +176,62 @@ The client treats addresses formed from this range as *additional IPv6 addresses
 - RangeStartIID and RangeEndIID MUST satisfy `Start ≤ End`.
 - Lifetime MUST be treated similar to IA_NA lifetimes.
 
+# Server Operation
+
+This section defines **normative algorithms**.
+
+## Server Allocation Algorithm
+
+### Allocation Preconditions
+
+Server MUST know:
+
+- The RA-advertised /64 for the link.
+- The administrative IID allocation pool (e.g., 0x0000:0000:0000:0000–0x0000:0000:00FF:FFFF).
+
+### Algorithm (Normative)
+
+Python example:
+
+```
+function allocate_iid_subrange(client_duid):
+    pool = get_available_iid_ranges()
+    if pool is empty:
+        return ERROR_NoAvailableRange
+
+    range = select_smallest_available_block(pool)  # SHOULD pick /120
+    mark_range_as_reserved(range, client_duid)
+    return range
+```
+
+### Rebinding
+
+If a client repeats SOLICIT with the same DUID:
+
+```
+if existing_assignment_for(client_duid):
+    return existing_assignment
+else:
+    return allocate_iid_subrange(client_duid)
+```
+
+### Collision Prevention
+
+Server MUST guarantee:
+
+`ReservedRange(clientA) ∩ ReservedRange(clientB) = ∅`.
+
+## Example Server Policy
+
+A server MAY divide the lower IID /80–/120 into blocks:
+
+```
+2001:db8:1000:200::0000/120  → Client 1
+2001:db8:1000:200::0100/120  → Client 2
+2001:db8:1000:200::0200/120  → Client 3
+...
+```
+
 # Security Considerations
 
 TODO Security
