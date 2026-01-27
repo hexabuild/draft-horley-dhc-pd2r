@@ -98,6 +98,8 @@ Table of Contents
    11. CLAT Use Cases
      11.1.  CLAT IID Reservation
        11.1.1.  Example CLAT Assignment
+     11.2.  Server State Machine
+       11.2.1.  Client State Machine
    12. Security Considerations
    13. IANA Considerations
    14. Normative References
@@ -374,6 +376,26 @@ Table of Contents
    Host loopback: 2001:db8:1000:200::2FF ```
 
    CLAT behavior is unchanged; the host simply has more stable options.
+
+   State Machines
+
+11.2.  Server State Machine
+
+   +----------------+ | INIT | +--------+-------+ | v
+   +--------+-------+ | WAIT_SOLICIT | +--------+-------+ | SOLICIT v
+   +--------+-------+ | ALLOCATE_RANGE | +--------+-------+ | v
+   +--------+-------+ | SEND_ADVERTISE | +--------+-------+ | REQUEST v
+   +--------+-------+ | SEND_REPLY | +----------------+
+
+11.2.1.  Client State Machine
+
+   +-------------+ | INIT | +------+------+ | v +------+------+ RA
+   arrives | LISTEN_RA |------------------------------+
+   +------+------+ | | | v | +------+------+ | | SOLICIT | |
+   +------+------+ | | DHCPv6 ADVERTISE | v | +------+-------+ | |
+   PROCESS_OPT | ← Validate ParentPrefix ←----+ +------+-------+ | v
+   +------+-------+ | CONFIG_IIDS | +------+-------+ | v
+   +------+-------+ | OPERATE | +--------------+
 
 12.  Security Considerations
 
