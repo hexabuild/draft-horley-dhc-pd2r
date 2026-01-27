@@ -232,6 +232,28 @@ A server MAY divide the lower IID /80–/120 into blocks:
 ...
 ```
 
+# Client Operation
+
+Client MUST follow these rules:
+
+1. Continue processing RAs and SLAAC as usual.
+2. Treat ParentPrefix as /64.
+3. Validate ParentPrefix against local RAs.
+4. Create addresses:
+example:
+
+```
+IPv6Address = ParentPrefix\[0:64] || IID_value
+```
+
+5. Perform DAD normally.
+6. MAY assign any sub-range address to:
+- primary interface
+- CLAT internal interface
+- loopback
+- virtual NICs
+- containers
+
 # Security Considerations
 
 TODO Security
