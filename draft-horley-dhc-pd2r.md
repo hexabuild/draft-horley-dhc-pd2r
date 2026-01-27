@@ -83,6 +83,18 @@ This mechanism extends conceptual models from RFC 9663 by specifying concrete DH
 
 {::boilerplate bcp14-tagged}
 
+# Terminology
+
+Key words (MUST, MUST NOT, etc.) are per RFC 8174.
+
+**Parent Prefix:** The /64 prefix advertised via RA.
+
+**IID Sub-Range:** A reserved block of the lower 64 bits, commonly /96 or /120.
+
+**Reserved IID Range:** The usable IPv6 addresses created by concatenating ParentPrefix\[0:64] with the IID sub-range.
+
+**CLAT Host:** A Customer-side translator using IPv6 addresses for NAT64/CLAT internal mappings.
+
 # Security Considerations
 
 TODO Security
