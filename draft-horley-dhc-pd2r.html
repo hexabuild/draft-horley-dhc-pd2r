@@ -1213,19 +1213,32 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-clat-use-cases" class="internal xref">CLAT Use Cases</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-clat-iid-reservation" class="internal xref">CLAT IID Reservation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1.2.1">
+                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-11.1.1" class="auto internal xref">11.1.1</a>.  <a href="#name-example-clat-assignment" class="internal xref">Example CLAT Assignment</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1583,26 +1596,81 @@ Client → SOLICIT<a href="#section-10.1-1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="clat-use-cases">
 <section id="section-11">
-      <h2 id="name-security-considerations">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-clat-use-cases">
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-clat-use-cases" class="section-name selfRef">CLAT Use Cases</a>
       </h2>
-<p id="section-11-1">TODO Security<a href="#section-11-1" class="pilcrow">¶</a></p>
+<div id="clat-iid-reservation">
+<section id="section-11.1">
+        <h3 id="name-clat-iid-reservation">
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-clat-iid-reservation" class="section-name selfRef">CLAT IID Reservation</a>
+        </h3>
+<p id="section-11.1-1">A CLAT host <span class="bcp14">MUST</span> use a deterministic IPv6 address for its NAT64-binding IPv6 endpoint.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1-2">Today, implementations typically:<a href="#section-11.1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-11.1-3.1">
+            <p id="section-11.1-3.1.1">derive the CLAT IPv6 address from EUI-64 or stable IID<a href="#section-11.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-11.1-3.2">
+            <p id="section-11.1-3.2.1">rely on RFC 7217 private addresses<a href="#section-11.1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-11.1-3.3">
+            <p id="section-11.1-3.3.1">limit the host to one CLAT address<a href="#section-11.1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-11.1-4">With IID sub-ranges, the host <span class="bcp14">MAY</span> allocate:<a href="#section-11.1-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-11.1-5.1">
+            <p id="section-11.1-5.1.1">one address for CLAT internal translation<a href="#section-11.1-5.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-11.1-5.2">
+            <p id="section-11.1-5.2.1">other addresses for per-flow, per-container, or per-service mapping<a href="#section-11.1-5.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<div id="example-clat-assignment">
+<section id="section-11.1.1">
+          <h4 id="name-example-clat-assignment">
+<a href="#section-11.1.1" class="section-number selfRef">11.1.1. </a><a href="#name-example-clat-assignment" class="section-name selfRef">Example CLAT Assignment</a>
+          </h4>
+<p id="section-11.1.1-1">```
+Reserved range: 2001:db8:1000:200::200–::2FF<a href="#section-11.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1.1-2">CLAT internal interface:
+  2001:db8:1000:200::200<a href="#section-11.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-11.1.1-3">Container A (CLAT-enhanced):
+  2001:db8:1000:200::210<a href="#section-11.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-11.1.1-4">Container B:
+  2001:db8:1000:200::220<a href="#section-11.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-11.1.1-5">Host loopback:
+  2001:db8:1000:200::2FF
+```<a href="#section-11.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-11.1.1-6">CLAT behavior is unchanged; the host simply has more stable options.<a href="#section-11.1.1-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-12">
+      <h2 id="name-security-considerations">
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-12-1">TODO Security<a href="#section-12-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-12">
+<section id="section-13">
       <h2 id="name-iana-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-12-1">This document has no IANA actions.<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-13-1">This document has no IANA actions.<a href="#section-13-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-13">
+<section id="section-14">
       <h2 id="name-normative-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
