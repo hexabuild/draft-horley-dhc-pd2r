@@ -92,9 +92,10 @@ Table of Contents
        8.1.3.  Rebinding
        8.1.4.  Collision Prevention
      8.2.  Example Server Policy
-   9.  Security Considerations
-   10. IANA Considerations
-   11. Normative References
+   9.  Client Operation
+   10. Security Considerations
+   11. IANA Considerations
+   12. Normative References
    Acknowledgments
    Author's Address
 
@@ -295,15 +296,34 @@ Table of Contents
    2001:db8:1000:200::0000/120 → Client 1 2001:db8:1000:200::0100/120 →
    Client 2 2001:db8:1000:200::0200/120 → Client 3 ...
 
-9.  Security Considerations
+9.  Client Operation
+
+   Client MUST follow these rules:
+
+   1.  Continue processing RAs and SLAAC as usual.
+
+   2.  Treat ParentPrefix as /64.
+
+   3.  Validate ParentPrefix against local RAs.
+
+   4.  Create addresses: example:
+
+   IPv6Address = ParentPrefix\[0:64] || IID_value
+
+   1.  Perform DAD normally.
+
+   2.  MAY assign any sub-range address to: - primary interface - CLAT
+       internal interface - loopback - virtual NICs - containers
+
+10.  Security Considerations
 
    TODO Security
 
-10.  IANA Considerations
+11.  IANA Considerations
 
    This document has no IANA actions.
 
-11.  Normative References
+12.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
