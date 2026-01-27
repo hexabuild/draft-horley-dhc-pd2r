@@ -320,6 +320,69 @@ Host loopback:
 
 CLAT behavior is unchanged; the host simply has more stable options.
 
+ State Machines
+
+## Server State Machine
+
+```
+          +----------------+
+          |   INIT         |
+          +--------+-------+
+                   |
+                   v
+          +--------+-------+
+          | WAIT_SOLICIT   |
+          +--------+-------+
+                   |
+     SOLICIT       v
+          +--------+-------+
+          | ALLOCATE_RANGE |
+          +--------+-------+
+                   |
+                   v
+          +--------+-------+
+          | SEND_ADVERTISE |
+          +--------+-------+
+                   |
+  REQUEST          v
+          +--------+-------+
+          | SEND_REPLY     |
+          +----------------+
+```
+
+### Client State Machine
+
+```
+ +-------------+
+ | INIT        |
+ +------+------+
+        |
+        v
+ +------+------+     RA arrives
+ | LISTEN_RA   |------------------------------+
+ +------+------+                              |
+        |                                      |
+        v                                      |
+ +------+------+                                |
+ | SOLICIT     |                                |
+ +------+------+                                |
+        | DHCPv6 ADVERTISE                      |
+        v                                      |
+ +------+-------+                               |
+ | PROCESS_OPT  |  ← Validate ParentPrefix ←----+
+ +------+-------+
+        |
+        v
+ +------+-------+
+ | CONFIG_IIDS  |
+ +------+-------+
+        |
+        v
+ +------+-------+
+ | OPERATE       |
+ +--------------+
+```
+
 # Security Considerations
 
 TODO Security
