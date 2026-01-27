@@ -93,9 +93,11 @@ Table of Contents
        8.1.4.  Collision Prevention
      8.2.  Example Server Policy
    9.  Client Operation
-   10. Security Considerations
-   11. IANA Considerations
-   12. Normative References
+   10. Examples
+     10.1.  Example DHCPv6 Exchange
+   11. Security Considerations
+   12. IANA Considerations
+   13. Normative References
    Acknowledgments
    Author's Address
 
@@ -308,22 +310,41 @@ Table of Contents
 
    4.  Create addresses: example:
 
-   IPv6Address = ParentPrefix\[0:64] || IID_value
+   IPv6Address = ParentPrefix/[0:64] || IID_value
 
    1.  Perform DAD normally.
 
    2.  MAY assign any sub-range address to: - primary interface - CLAT
        internal interface - loopback - virtual NICs - containers
 
-10.  Security Considerations
+10.  Examples
+
+10.1.  Example DHCPv6 Exchange
+
+   ``` Client → SOLICIT
+
+   Server → ADVERTISE IA_NA: 2001:db8:1000:200::a8f1
+   OPTION_IID_SUBRANGE: ParentPrefix: 2001:db8:1000:200::/64 StartIID:
+   0x0000000000000100 EndIID: 0x00000000000001FF Lifetime: 7200
+
+   Client → REQUEST
+
+   Server → REPLY (same contents) ```
+
+   Client may now assign:
+
+   2001:db8:1000:200::100 2001:db8:1000:200::101 ...
+   2001:db8:1000:200::1FF
+
+11.  Security Considerations
 
    TODO Security
 
-11.  IANA Considerations
+12.  IANA Considerations
 
    This document has no IANA actions.
 
-12.  Normative References
+13.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
