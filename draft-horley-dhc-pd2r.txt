@@ -86,7 +86,37 @@ Table of Contents
 
 1.  Introduction
 
-   TODO Introduction
+   IPv6 addressing architecture defines a /64 prefix boundary between
+   the network prefix and Interface Identifier (IID).  Hosts typically
+   obtain IPv6 addresses through SLAAC, DHCPv6 IA_NA, DHCPv6 IA_PD, or
+   combinations thereof.  However, emerging endpoint
+   architectures—multi-interface nodes, CLAT translators (RFC 6877),
+   virtual machine hosting, and container networks—require access to
+   *multiple deterministic IPv6 addresses belonging to the same on-link
+   /64.
+
+   Prefix Delegation (PD) is not appropriate in these situations
+   because:
+
+   *  PD produces a routed prefix, not intended for assignment on the
+      link.
+
+   *  PD requires router participation, not available on access links
+      like Wi-Fi or residential broadband.
+
+   *  Hosts need the additional addresses locally, not as routed
+      subnets.
+
+   This document introduces *IID Sub-Range Reservation*, allowing a
+   DHCPv6 server to reserve a block of IIDs in the lower 64 bits of an
+   on-link /64 and deliver it to the client—*without altering router
+   advertisements or ND behavior.  Hosts continue to perceive the
+   network prefix as a normal /64.  The reserved block is not a
+   delegated prefix, not routed, and not advertised externally.
+
+   This mechanism extends conceptual models from RFC 9663 by specifying
+   concrete DHCPv6 behavior, algorithms, interoperability rules, and
+   examples.
 
 2.  Conventions and Definitions
 

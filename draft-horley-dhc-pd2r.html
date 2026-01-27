@@ -1175,7 +1175,21 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">IPv6 addressing architecture defines a /64 prefix boundary between the network prefix and Interface Identifier (IID). Hosts typically obtain IPv6 addresses through SLAAC, DHCPv6 IA_NA, DHCPv6 IA_PD, or combinations thereof. However, emerging endpoint architectures—multi-interface nodes, CLAT translators (RFC 6877), virtual machine hosting, and container networks—require access to *multiple deterministic IPv6 addresses belonging to the same on-link /64.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Prefix Delegation (PD) is not appropriate in these situations because:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-3.1">
+          <p id="section-1-3.1.1">PD produces a routed prefix, not intended for assignment on the link.<a href="#section-1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.2">
+          <p id="section-1-3.2.1">PD requires router participation, not available on access links like Wi-Fi or residential broadband.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.3">
+          <p id="section-1-3.3.1">Hosts need the additional addresses locally, not as routed subnets.<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-4">This document introduces <strong>IID Sub-Range Reservation</strong>, allowing a DHCPv6 server to reserve a block of IIDs in the lower 64 bits of an on-link /64 and deliver it to the client—*without altering router advertisements or ND behavior. Hosts continue to perceive the network prefix as a normal /64. The reserved block is not a delegated prefix, not routed, and not advertised externally.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">This mechanism extends conceptual models from RFC 9663 by specifying concrete DHCPv6 behavior, algorithms, interoperability rules, and examples.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
