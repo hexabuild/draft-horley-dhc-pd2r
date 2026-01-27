@@ -112,8 +112,25 @@ The reserved range is local-only and MUST NOT be treated as a routed prefix.
 5. **Host-local multi-interface use allowed.**
 Clients MAY assign sub-range addresses to any local interface.
 
-6. **If DHCPv6 and SLAAC are run on the same on-link via the RA**
-Then simple duplicate address detection will be used for the rare cases where a SLAAC address is dynamically generated in one of the IID Sub-Ranges that is in use. The host that is allocated the IID Sub-Range MUST do the DAD response on behalf of the entire range.
+6. **If DHCPv6 and SLAAC are run on the same on-link via the RA,**
+then simple duplicate address detection will be used for the rare cases where a SLAAC address is dynamically generated in one of the IID Sub-Ranges that is in use. The host that is allocated the IID Sub-Range MUST do the DAD response on behalf of the entire range.
+
+# Mechanism Overview
+
+The mechanism operates in the following phases:
+
+```text
++---------+       DHCPv6 IA_NA + OPTION_IID_SUBRANGE        +---------+
+| Client  | <------------------------------------------------> | Server |
++---------+                                                     +---------+
+
+1. Client sends SOLICIT.
+2. Server allocates and returns IID sub-range via OPTION_IID_SUBRANGE.
+3. Client configures any number of addresses from that range.
+4. Client still processes RA and SLAAC normally.
+```
+
+The DHCPv6 server never advertises a prefix and never signals a non-/64 boundary.
 
 # Security Considerations
 
