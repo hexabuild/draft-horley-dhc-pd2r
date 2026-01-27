@@ -383,17 +383,38 @@ CLAT behavior is unchanged; the host simply has more stable options.
  +--------------+
 ```
 
+# Validation Logic
+
+Client MUST:
+
+1. Confirm ParentPrefix matches a prefix advertised via RA.
+2. Reject options referencing unknown or non-/64 prefixes.
+3. Ensure `RangeEndIID ≥ RangeStartIID`.
+4. Ensure generated addresses succeed in DAD.
+5. Ignore invalid or overlapping sub-ranges.
+
+Server MUST:
+
+1. Guarantee exclusivity of IID ranges.
+2. Validate ParentPrefix is an on-link /64.
+3. Reject attempts to allocate ranges outside administrative pools.
+
 # Security Considerations
 
-TODO Security
+- Predictable IID ranges may reveal host identity patterns; operators SHOULD allow randomized distribution.
+- DHCPv6 authentication SHOULD be used when available.
+- No new attacks on SLAAC or RAs are introduced.
 
 # IANA Considerations
 
-This document has no IANA actions.
+IANA is requested to assign a DHCPv6 option code for:
 
+```
+OPTION_IID_SUBRANGE
+```
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
-TODO acknowledge.
+The author(s) would like to acknowledge the valuable input and contributions from Tim Winters, Nick Buraglio, and Tommy Jensen.
