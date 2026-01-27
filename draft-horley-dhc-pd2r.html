@@ -1177,19 +1177,44 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-server-operation" class="internal xref">Server Operation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-server-allocation-algorithm" class="internal xref">Server Allocation Algorithm</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.1">
+                    <p id="section-toc.1-1.8.2.1.2.1.1"><a href="#section-8.1.1" class="auto internal xref">8.1.1</a>.  <a href="#name-allocation-preconditions" class="internal xref">Allocation Preconditions</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.2">
+                    <p id="section-toc.1-1.8.2.1.2.2.1"><a href="#section-8.1.2" class="auto internal xref">8.1.2</a>.  <a href="#name-algorithm-normative" class="internal xref">Algorithm (Normative)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.3">
+                    <p id="section-toc.1-1.8.2.1.2.3.1"><a href="#section-8.1.3" class="auto internal xref">8.1.3</a>.  <a href="#name-rebinding" class="internal xref">Rebinding</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1.2.4">
+                    <p id="section-toc.1-1.8.2.1.2.4.1"><a href="#section-8.1.4" class="auto internal xref">8.1.4</a>.  <a href="#name-collision-prevention" class="internal xref">Collision Prevention</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-example-server-policy" class="internal xref">Example Server Policy</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1387,26 +1412,114 @@ then simple duplicate address detection will be used for the rare cases where a 
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="server-operation">
 <section id="section-8">
-      <h2 id="name-security-considerations">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-server-operation">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-server-operation" class="section-name selfRef">Server Operation</a>
       </h2>
-<p id="section-8-1">TODO Security<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">This section defines <strong>normative algorithms</strong>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<div id="server-allocation-algorithm">
+<section id="section-8.1">
+        <h3 id="name-server-allocation-algorithm">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-server-allocation-algorithm" class="section-name selfRef">Server Allocation Algorithm</a>
+        </h3>
+<div id="allocation-preconditions">
+<section id="section-8.1.1">
+          <h4 id="name-allocation-preconditions">
+<a href="#section-8.1.1" class="section-number selfRef">8.1.1. </a><a href="#name-allocation-preconditions" class="section-name selfRef">Allocation Preconditions</a>
+          </h4>
+<p id="section-8.1.1-1">Server <span class="bcp14">MUST</span> know:<a href="#section-8.1.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.1.1-2.1">
+              <p id="section-8.1.1-2.1.1">The RA-advertised /64 for the link.<a href="#section-8.1.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-8.1.1-2.2">
+              <p id="section-8.1.1-2.2.1">The administrative IID allocation pool (e.g., 0x0000:0000:0000:0000–0x0000:0000:00FF:FFFF).<a href="#section-8.1.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</section>
+</div>
+<div id="algorithm-normative">
+<section id="section-8.1.2">
+          <h4 id="name-algorithm-normative">
+<a href="#section-8.1.2" class="section-number selfRef">8.1.2. </a><a href="#name-algorithm-normative" class="section-name selfRef">Algorithm (Normative)</a>
+          </h4>
+<p id="section-8.1.2-1">Python example:<a href="#section-8.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.1.2-2">```
+function allocate_iid_subrange(client_duid):
+    pool = get_available_iid_ranges()
+    if pool is empty:
+        return ERROR_NoAvailableRange<a href="#section-8.1.2-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-8.1.2-3">
+<pre>
+range = select_smallest_available_block(pool)  # SHOULD pick /120
+mark_range_as_reserved(range, client_duid)
+return range ```
+</pre><a href="#section-8.1.2-3" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="rebinding">
+<section id="section-8.1.3">
+          <h4 id="name-rebinding">
+<a href="#section-8.1.3" class="section-number selfRef">8.1.3. </a><a href="#name-rebinding" class="section-name selfRef">Rebinding</a>
+          </h4>
+<p id="section-8.1.3-1">If a client repeats SOLICIT with the same DUID:<a href="#section-8.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.1.3-2"><code>
+if existing_assignment_for(client_duid):
+    return existing_assignment
+else:
+    return allocate_iid_subrange(client_duid)
+</code><a href="#section-8.1.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="collision-prevention">
+<section id="section-8.1.4">
+          <h4 id="name-collision-prevention">
+<a href="#section-8.1.4" class="section-number selfRef">8.1.4. </a><a href="#name-collision-prevention" class="section-name selfRef">Collision Prevention</a>
+          </h4>
+<p id="section-8.1.4-1">Server <span class="bcp14">MUST</span> guarantee:<a href="#section-8.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-8.1.4-2"><code>ReservedRange(clientA) ∩ ReservedRange(clientB) = ∅</code>.<a href="#section-8.1.4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="example-server-policy">
+<section id="section-8.2">
+        <h3 id="name-example-server-policy">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-example-server-policy" class="section-name selfRef">Example Server Policy</a>
+        </h3>
+<p id="section-8.2-1">A server <span class="bcp14">MAY</span> divide the lower IID /80–/120 into blocks:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2"><code>
+2001:db8:1000:200::0000/120  → Client 1
+2001:db8:1000:200::0100/120  → Client 2
+2001:db8:1000:200::0200/120  → Client 3
+...
+</code><a href="#section-8.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-9">
+      <h2 id="name-security-considerations">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-9-1">TODO Security<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-iana-considerations">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-9-1">This document has no IANA actions.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">This document has no IANA actions.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-10">
+<section id="section-11">
       <h2 id="name-normative-references">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
