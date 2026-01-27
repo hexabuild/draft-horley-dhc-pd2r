@@ -81,9 +81,10 @@ Table of Contents
    3.  Terminology
    4.  Requirements and Constraints
    5.  Mechanism Overview
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  Normative References
+   6.  Protocol Overview
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Normative References
    Acknowledgments
    Author's Address
 
@@ -173,9 +174,9 @@ Table of Contents
 
    The mechanism operates in the following phases:
 
-   ```text +---------+ DHCPv6 IA_NA + OPTION_IID_SUBRANGE +---------+ |
-   Client | <------------------------------------------------> |
-   Server | +---------+ +---------+
+   ``` +---------+ DHCPv6 IA_NA + OPTION_IID_SUBRANGE +---------+ |
+   Client | <------------------------------------------> | Server |
+   +---------+ +---------+
 
    1.  Client sends SOLICIT.
 
@@ -189,15 +190,39 @@ Table of Contents
    The DHCPv6 server never advertises a prefix and never signals a
    non-/64 boundary.
 
-6.  Security Considerations
+6.  Protocol Overview
+
+   A new DHCPv6 option, *OPTION_IID_SUBRANGE*, provides:
+
+   *  ParentPrefix (always a /64)
+
+   *  StartIID
+
+   *  EndIID
+
+   *  Lifetime
+
+   The client treats addresses formed from this range as _additional
+   IPv6 addresses_. These addresses:
+
+   *  belong to the on-link /64
+
+   *  are not SLAAC addresses and do not follow IID rules (stable/
+      private)
+
+   *  MUST pass DAD
+
+   *  MAY be used by any local interface
+
+7.  Security Considerations
 
    TODO Security
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Normative References
+9.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
